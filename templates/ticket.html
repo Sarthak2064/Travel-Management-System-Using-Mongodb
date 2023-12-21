@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ticket</title>
+  <link rel="stylesheet" href="../static/payslip.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="innercontent">
+      <div class="header">
+        <h2 style="font-weight: 700;">M.B Link</h2>
+        <h6 style="margin-left: 7rem; font-weight: bolder;">Ticket Number: <input type="text" id="ticketnumber" value=""
+            readonly style="border: none;"></h6>
+        <p id="datePlaceholder"></p>
+        <script>
+          function getDateWithoutTime(date) {
+            if (!(date instanceof Date)) {
+              date = new Date(date);
+            }
+
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+
+            return `${year}-${month}-${day}`;
+          }
+
+          const currentDate = new Date();
+          const dateWithoutTime = getDateWithoutTime(currentDate);
+
+          const datePlaceholder = document.getElementById("datePlaceholder");
+          datePlaceholder.textContent = "Date: " + dateWithoutTime; getDateWithoutTime(currentDate);
+          console.log(dateWithoutTime);
+
+        </script>
+      </div>
+
+      <div class="employee-info">
+        <h4 style="margin-top: 20px; font-weight: bolder;">Customer Information</h4>
+        {% if newdata %}
+        <p>Name: {{ newdata.get('firstname', '') }} {{ newdata.get('lastname', '') }}</p>
+        <p>Customer ID: {{ newdata.get('username', '') }}</p>
+        <p>Email: {{ newdata.get('email', '') }}</p>
+        <p>Contact: {{ newdata.get('contact', '') }}</p>
+        {% endif %}
+      </div>
+
+      <div class="earnings-deductions">
+        <h4 style="margin-top: 20px; font-weight: bolder;">Bus Details</h4>
+        {% if newbus %}
+        <h6 style="color: #f05c5c;">Bus Number: {{ newbus.get('busnumber','') }}</h6>
+        {% endif %}
+        <table class="table-bordered">
+          <tr>
+            <th>Departure Time</th>
+            <th>Arrival Time</th>
+          </tr>
+          <!-- Add rows for each earning component (e.g., Basic, HRA, DA) -->
+          {% if newbus %}
+          <tr>
+            <td>{{ newbus.get('deptTime','') }}</td>
+            <td>{{ newbus.get('arrivalTime','') }}</td>
+          </tr>
+          {% endif %}
+          <!-- Repeat for other earning components -->
+        </table>
+
+        <h4 style="margin-top: 20px; font-weight: bolder;">Additional Charges</h4>
+        <table class="table-bordered">
+          <tr>
+            <th>Component</th>
+            <th>Amount</th>
+          </tr>
+          <!-- Add rows for each deduction component (e.g., Tax) -->
+          <tr>
+            <td>Tax</td>
+            {% set total_cost = newbill.get('cost') | float %}
+            {% set tax = total_cost * 0.025 if total_cost is number %}
+            <td>{{tax}}</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="totals">
+        {% if newbill %}
+        <h6>No Of Seats Booked : {{ newbill.get('seats','') }}</h6>
+        {% set total_cost = newbill.get('cost') | float %}
+        {% set total_cost_tax = total_cost + tax %}
+        <h6 style="font-weight: bolder;">Total Cost : {{ total_cost_tax }}</h6>
+        <h6>Payment Method : {{ newbill.get('paymentmethod','') | upper }}</h6>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <div class="buttons">
+    <button class="print-button btn btn-outline-danger mb-3" onclick="printPayrollSlip()">Print Ticket</button>
+  </div>
+
+  <script>
+    function printPayrollSlip() {
+      var printContents = document.querySelector('.container').innerHTML;
+      var originalContents = document.body.innerHTML;
+      document.body.innerHTML = printContents;
+      window.print();
+      document.body.innerHTML = originalContents;
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      // Get the input field element
+      var ticketNumberInput = document.getElementById('ticketnumber');
+
+      // Generate a random ticket number (10 digits)
+      var randomTicketNumber = generateRandomTicketNumber(10);
+
+      // Set the generated ticket number in the input field
+      ticketNumberInput.value = randomTicketNumber;
+    });
+
+    function generateRandomTicketNumber(length) {
+      // Generate a random number with the specified length
+      var min = Math.pow(10, length - 1);
+      var max = Math.pow(10, length) - 1;
+      return Math.floor(min + Math.random() * (max - min + 1)).toString();
+    }
+  </script>
+
+</body>
+
+</html>

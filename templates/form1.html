@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <meta property="twitter:card" content="summary_large_image" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+        data-tag="font" />
+    <link rel="stylesheet" href="../static/sidebarstyles.css">
+</head>
+
+<body>
+
+    <div class="d-flex" id="wrapper">
+        <!-- Sidebar-->
+        <div class="border-end bg-light" id="sidebar-wrapper">
+            <div class="sidebar-heading border-bottom bg-light">Travel</div>
+            <div class="list-group list-group-flush">
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="./index.html">Home</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3"
+                    href="./booking.html">Customer
+                    Details</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="./booking.html">Bus
+                    Details</a>
+            </div>
+        </div>
+        <!-- Page content wrapper-->
+        <div id="page-content-wrapper">
+            <!-- Top navigation-->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom" style="height: 4.68rem;">
+                <div class="container-fluid">
+                    <button class="btn btn-primary" id="sidebarToggle">Menu</button>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation"><span
+                            class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                            <li class="nav-item active"><a class="nav-link" href="./index.html">Home</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- Page content-->
+            <div class="container"
+                style="display: flex; justify-content: center; align-items: center; margin-top: 30px;">
+                <div class="userform" id="target0">
+                    <div class="container" style="display: flex; justify-content: center; align-items: center;">
+                        <div class="col-sm-8 order-md-1">
+                            <h4 class="mb-3">Customer Details</h4>
+                            <div class="mb-3">
+                                <label for="agency">Travel Agency</label>
+                                <input class="form-control" disabled value="MB Link Travels">
+                                </input>
+                            </div>
+                            <form class="needs-validation" id="myForm" novalidate="" action="form1.html" method="POST">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="firstName">First name*</label>
+                                        <input type="text" class="form-control" name="firstName" placeholder="" value=""
+                                            required="" pattern="[A-Za-z\s]+">
+                                        <div class="invalid-feedback">
+                                            Valid first name is required.
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="lastName">Last name*</label>
+                                        <input type="text" class="form-control" name="lastName" placeholder="" value=""
+                                            required="" pattern="[A-Za-z\s]+">
+                                        <div class="invalid-feedback">
+                                            Valid last name is required.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="username">Customer ID*</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" name="username" placeholder=""
+                                            required="" pattern="^[0-9]+$">
+                                        <div class=" invalid-feedback" style="width: 100%;">
+                                            Enter a valid Customer Id.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="contact">Contact*</label>
+                                    <input type="tel" class="form-control" name="contact" placeholder="" required=""
+                                        pattern="^\d{10}$">
+                                    <div class="invalid-feedback">
+                                        Please enter a valid Contact.
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="email">Email*</label>
+                                    <input type="email" class="form-control" name="email" placeholder="" required>
+                                    <div class="invalid-feedback">
+                                        Please enter a valid email address.
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="address">Address <span class="text-muted">(Optional)</span></label>
+                                    <input type="text" class="form-control" name="address" placeholder="1234 Main St"
+                                        pattern="^[\w\s\d.,#-]+$">
+                                    <div class="invalid-feedback">
+                                        Please enter your address.
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-5 mb-3">
+                                        <label for="country">Country*</label>
+                                        <input type="text" class="form-control" name="country" placeholder=""
+                                            required="" pattern="[A-Za-z\s]+">
+                                        <div class="invalid-feedback">
+                                            Please enter valid Country Name.
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="city">City*</label>
+                                        <input type="text" class="form-control" name="city" placeholder="" required=""
+                                            pattern="[A-Za-z\s]+">
+                                        <div class="invalid-feedback">
+                                            Please enter valid City Name.
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label for="zip">Zip*</label>
+                                        <input type="text" class="form-control" name="zip" placeholder="" required=""
+                                            pattern="\d{6}">
+                                        <div class="invalid-feedback">
+                                            Please enter valid Zipcode.
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="./index.html" style="color: white; text-decoration: none;"><button
+                                        class="btn btn-outline-primary btn-lg btn-block btn-sm" type="button">Go
+                                        Back</button></a>
+                                <button class="btn btn-outline-primary btn-lg btn-block btn-sm" type="submit"
+                                    id="submitButton">Submit</button>
+                                <input type="hidden" name="timestamp1" id="timestamp1" value="">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <script>
+
+        (function () {
+            'use strict'
+
+            const forms = document.querySelectorAll('.needs-validation')
+
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        })()
+
+        window.addEventListener('DOMContentLoaded', event => {
+
+            // Toggle the side navigation
+            const sidebarToggle = document.body.querySelector('#sidebarToggle');
+            if (sidebarToggle) {
+                // Uncomment Below to persist sidebar toggle between refreshes
+                if (localStorage.getItem('sb|sidebar-toggle') === 'true') {
+                    document.body.classList.toggle('sb-sidenav-toggled');
+                }
+                sidebarToggle.addEventListener('click', event => {
+                    event.preventDefault();
+                    document.body.classList.toggle('sb-sidenav-toggled');
+                    localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains('sb-sidenav-toggled'));
+                });
+            }
+
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Find the form by its ID
+            const form = document.getElementById('myForm');
+            const submitButton = document.getElementById('submitButton');
+
+            // Attach event listener for form submission
+            form.addEventListener('submit', function (event) {
+                // Prevent the default form submission behavior
+                event.preventDefault();
+
+                // Check if the form is valid
+                if (form.checkValidity()) {
+                    // Show a confirmation prompt
+                    const confirmation = confirm('Are you sure you want to submit the form?');
+
+                    // If the user confirms, proceed to the next page
+                    if (confirmation) {
+                        // Redirect to the next page (replace 'nextPage.html' with your desired page)
+                        form.action = 'form1.html'; // Replace with your processing script URL
+                        form.method = 'POST'; // Set the method to POST
+
+                        // Submit the form
+                        form.submit();
+                        // window.location.href = './form2.html';
+                    } else {
+                        // If the user cancels, do nothing or perform another action
+                        console.log('Submission cancelled');
+                    }
+                } else {
+                    // If the form is invalid, show an error or perform another action
+                    console.log('Form is not valid');
+                }
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Get the input field element
+            const timestamp = new Date().getTime();
+            var time = document.getElementById('timestamp1')
+
+            // Set the generated number of seats in the input field
+            time.value = timestamp;
+        });
+
+    </script>
+    <!-- <script src="../static/script.js">
+    </script> -->
+    <!-- <script src="curd.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/f59149ef47.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
